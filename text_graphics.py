@@ -1,6 +1,8 @@
 dialogue_start_x = 400
 dialogue_end_x = 1200
 typing_speed = 10 #changing as editing
+line_speed = 10 #---------------
+button_speed = 100 #-----------------
 
 fonts = {
     '1' : ("OCR A Extended", 35),
