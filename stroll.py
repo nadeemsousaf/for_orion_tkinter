@@ -30,19 +30,14 @@ def loading_bar(): #just for graphics
     load_bar.place(x=600, y=380, width=350)
     load_bar.start()
 
-    #prologue() #speeding up for now
-
-    #start_prologue = lambda: prologue() #need
-    #window.after(6200, start_prologue) #need
-
 def prologue():
     clean_canvas()
     type_text(dialogue['prologue_title'], dialogue_start_x, 100, fonts['3'])
     text_body = lambda: type_text(dialogue['prologue_body'], dialogue_start_x, 150, fonts['3'])
-    window.after(1000, text_body)
+    window.after(line_speed, text_body)
     button_1 = Button(window, text="Continue...", font=fonts['3'], command=sign_off_report)
     appearing_button = lambda : canvas.create_window(700, 600, anchor="nw", window=button_1)
-    window.after(16000, appearing_button)
+    window.after(button_speed, appearing_button)
 
 def type_text(text, x, y, font):
     typing = lambda char: canvas.create_text(x, y, anchor="nw", text=char, font=font)
@@ -69,14 +64,15 @@ def save_name():
     user.name = current_widgets[len(current_widgets)-1].get()
     clean_canvas()
     loading_bar()
-    type_text(dialogue['save_name'], dialogue_start_x, 100, fonts['3'])
+    type_text(dialogue['save_name'], 550, 400, fonts['3'])
     window.after(6200, name_submission_page)
 
 def name_submission_page():
     clean_canvas()
-    type_text(dialogue['name_submission_page'], dialogue_start_x, 100, fonts['3'])
-    type_text(user.name, dialogue_start_x, 150, fonts['3'])
-
+    button_1 = Button(window, text="Continue", font=fonts['3']) #, command=
+    type_text(dialogue['name_submission_page'], 550, 400, fonts['3'])
+    type_text(user.name, 550, 450, fonts['3'])
+    canvas.create_window(700, 500, anchor="nw", window=button_1)
 
 def clean_canvas():
     for i in current_widgets:
@@ -85,6 +81,5 @@ def clean_canvas():
     canvas.delete('all')
 
 opening_title()
-#sign_off_report()
 
 window.mainloop()
