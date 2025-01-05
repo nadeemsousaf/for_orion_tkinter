@@ -1,6 +1,6 @@
 from tkinter import * 
 from tkinter import ttk
-from fonts import *
+from text_graphics import *
 from classes import *
 
 window = Tk()
@@ -35,18 +35,12 @@ def loading_bar(): #just for graphics
 
 def prologue():
     clean_canvas()
-    type_text("Mission Report:", 400, 100, fonts['3'])
-    body_text_1 = lambda: type_text("Rocket is off course.", 400, 150, fonts['3'])
-    body_text_2 = lambda: type_text("Rocket is off course.", 400, 150, fonts['3'])
-    body_text_3 = lambda: type_text("Rocket is off course.", 400, 150, fonts['3'])
-    body_text_4 = lambda: type_text("Rocket is off course.", 400, 150, fonts['3'])
-    window.after(1000, body_text_1)
-    window.after(2000, body_text_2)
-    window.after(3000, body_text_3)
-    window.after(4000, body_text_4)
-    button_1 = Button(window, text="Continue...", font=fonts['4'], command=sign_off_report)
-    appearing_button = lambda : canvas.create_window(700, 400, anchor="nw", window=button_1)
-    window.after(5000, appearing_button)
+    type_text(dialogue['prologue_title'], dialogue_start_x, 100, fonts['3'])
+    text_body = lambda: type_text(dialogue['prologue_body'], dialogue_start_x, 150, fonts['3'])
+    window.after(1000, text_body)
+    button_1 = Button(window, text="Continue...", font=fonts['3'], command=sign_off_report)
+    appearing_button = lambda : canvas.create_window(700, 600, anchor="nw", window=button_1)
+    window.after(12000, appearing_button)
 
 def type_text(text, x, y, font):
     typing = lambda char: canvas.create_text(x, y, anchor="nw", text=char, font=font)
@@ -55,6 +49,8 @@ def type_text(text, x, y, font):
         typing(char)
         window.after(100)
         x += 10
+        if (x > dialogue_end_x):
+            x = dialogue_start_x; y += 50
     
 def sign_off_report():
     clean_canvas()
