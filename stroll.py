@@ -32,9 +32,7 @@ def loading_bar(): #just for graphics
 
 def prologue():
     clean_canvas()
-    type_text(dialogue['prologue_title'], dialogue_start_x, 100, fonts['3'])
-    text_body = lambda: type_text(dialogue['prologue_body'], dialogue_start_x, 150, fonts['3'])
-    window.after(line_speed, text_body)
+    type_text(dialogue['prologue'], dialogue_start_x, 100, fonts['3'])
     button_1 = Button(window, text="Continue...", font=fonts['3'], command=sign_off_report)
     appearing_button = lambda : canvas.create_window(700, 600, anchor="nw", window=button_1)
     window.after(button_speed, appearing_button)
@@ -43,11 +41,14 @@ def type_text(text, x, y, font):
     typing = lambda char: canvas.create_text(x, y, anchor="nw", text=char, font=font)
     for char in text:
         window.update()
-        typing(char)
-        window.after(typing_speed)
-        x += 10
-        if (x > dialogue_end_x):
-            x = dialogue_start_x; y += 50
+        if char == "@":
+            x = dialogue_start_x; y += 50; 
+        else:
+            typing(char)
+            window.after(typing_speed)
+            x += 10
+            if (x > dialogue_end_x):
+                x = dialogue_start_x; y += 50
     
 def sign_off_report():
     clean_canvas()

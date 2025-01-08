@@ -12,8 +12,8 @@ fonts = {
 }
 
 dialogue = {
-    'prologue_title' : "Mission Report:",
-    'prologue_body' : "67th rotation of Earth. The solar sails have been damaged by space debris during an acute solar event. Repairs must be made to correct course and speed of ship.",
     'save_name': "Processing report submission...",
     'name_submission_page': "Submission complete. Thank you,",
+    'prologue': "Mission Report:@67th rotation of Earth. The solar sails have been damaged by space debris during an acute solar event. Repairs must be made to correct course and speed of ship.",
+
 }
