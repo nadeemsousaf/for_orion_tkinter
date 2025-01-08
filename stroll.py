@@ -69,10 +69,14 @@ def save_name():
 
 def name_submission_page():
     clean_canvas()
-    button_1 = Button(window, text="Continue", font=fonts['3']) #, command=
+    button_1 = Button(window, text="Continue", font=fonts['3']) #, command=setting_transition
     type_text(dialogue['name_submission_page'], 550, 400, fonts['3'])
     type_text(user.name, 550, 450, fonts['3'])
     canvas.create_window(700, 500, anchor="nw", window=button_1)
+
+def setting_transition():
+    ok = 1 #shutting up complaints
+    #many images of ship, giving good idea of surroundings before giving user tasks
 
 def clean_canvas():
     for i in current_widgets:
