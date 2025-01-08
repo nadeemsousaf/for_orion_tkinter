@@ -33,16 +33,22 @@ def loading_bar(): #just for graphics
 def prologue():
     clean_canvas()
     type_text(dialogue['prologue'], dialogue_start_x, 100, fonts['3'])
+    #button_1 = Button(window, text="Continue...", font=fonts['3'], command=sign_off_report)
+    #appearing_button = lambda : canvas.create_window(700, 600, anchor="nw", window=button_1)
+    #window.after(button_speed, appearing_button)
+
+def prologue_button(): #for now, will change to be used in all functions for action (*)
     button_1 = Button(window, text="Continue...", font=fonts['3'], command=sign_off_report)
-    appearing_button = lambda : canvas.create_window(700, 600, anchor="nw", window=button_1)
-    window.after(button_speed, appearing_button)
+    canvas.create_window(700, 600, anchor="nw", window=button_1)
 
 def type_text(text, x, y, font):
     typing = lambda char: canvas.create_text(x, y, anchor="nw", text=char, font=font)
     for char in text:
         window.update()
-        if char == "@":
+        if char == d_new_line:
             x = dialogue_start_x; y += 50; 
+        elif char == d_action: #to account for timing issues in text typing #need to change to be used in all functions for action (*)
+            prologue_button()
         else:
             typing(char)
             window.after(typing_speed)
