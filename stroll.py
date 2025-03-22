@@ -71,19 +71,71 @@ def save_name():
     user.name = current_widgets[len(current_widgets)-1].get()
     clean_canvas()
     loading_bar()
-    type_text(dialogue['save_name'], 550, 400, fonts['3'])
+    type_text(dialogue['save_name'], 620, 420, fonts['3'])
     window.after(6200, name_submission_page)
 
 def name_submission_page():
     clean_canvas()
-    button_1 = Button(window, text="Continue", font=fonts['3']) #, command=setting_transition
+    button_1 = Button(window, text="Continue", font=fonts['3'], command=setting_transition) #, command=setting_transition
     type_text(dialogue['name_submission_page'], 550, 400, fonts['3'])
     type_text(user.name, 550, 450, fonts['3'])
     canvas.create_window(700, 500, anchor="nw", window=button_1)
 
-def setting_transition():
-    ok = 1 #shutting up complaints
-    #many images of ship, giving good idea of surroundings before giving user tasks
+def setting_transition(): #many images of ship, giving good idea of surroundings before giving user tasks, slide transition style
+    #clean_canvas()
+    canvas.pack(fill="both", expand=True)
+    button_1 = Button(window, text="Continue", font=fonts['3'], command=command_deck) #, command=setting_transition
+    type_text(dialogue['ship_overview_intro'], 100, 100, fonts['3'])
+    canvas.create_window(700, 500, anchor="nw", window=button_1)
+
+def command_deck():
+    clean_canvas()
+    #canvas.pack(fill="both", expand=True)
+    button_1 = Button(window, text="Continue", font=fonts['3'], command=lab) #, command=setting_transition
+    type_text(dialogue['ship_overview_command_deck'], 100, 100, fonts['3'])
+    canvas.create_window(700, 500, anchor="nw", window=button_1)
+
+def lab():
+    clean_canvas()
+    #canvas.pack(fill="both", expand=True)
+    button_1 = Button(window, text="Continue", font=fonts['3'], command=cafeteria) #, command=setting_transition
+    type_text(dialogue['ship_overview_lab'], 100, 100, fonts['3'])
+    canvas.create_window(700, 500, anchor="nw", window=button_1)
+
+def cafeteria():
+    clean_canvas()
+    #canvas.pack(fill="both", expand=True)
+    button_1 = Button(window, text="Continue", font=fonts['3'], command=gym) #, command=setting_transition
+    type_text(dialogue['ship_overview_cafeteria'], 100, 100, fonts['3'])
+    canvas.create_window(700, 500, anchor="nw", window=button_1)
+
+def gym():
+    clean_canvas()
+    #canvas.pack(fill="both", expand=True)
+    button_1 = Button(window, text="Continue", font=fonts['3'], command=sleeping_quarters) #, command=setting_transition
+    type_text(dialogue['ship_overview_gym'], 100, 100, fonts['3'])
+    canvas.create_window(700, 500, anchor="nw", window=button_1)
+
+def sleeping_quarters():
+    clean_canvas()
+    #canvas.pack(fill="both", expand=True)
+    button_1 = Button(window, text="Continue", font=fonts['3'], command=machine_room) #, command=setting_transition
+    type_text(dialogue['ship_overview_sleeping_quarters'], 100, 100, fonts['3'])
+    canvas.create_window(700, 500, anchor="nw", window=button_1)
+
+def machine_room():
+    clean_canvas()
+    #canvas.pack(fill="both", expand=True)
+    button_1 = Button(window, text="Continue", font=fonts['3'], command=airlock) #, command=setting_transition
+    type_text(dialogue['ship_overview_machine_room'], 100, 100, fonts['3'])
+    canvas.create_window(700, 500, anchor="nw", window=button_1)
+
+def airlock():
+    clean_canvas()
+    #canvas.pack(fill="both", expand=True)
+    button_1 = Button(window, text="Continue", font=fonts['3']) #, command=setting_transition
+    type_text(dialogue['ship_overview_airlock'], 100, 100, fonts['3'])
+    canvas.create_window(700, 500, anchor="nw", window=button_1)
 
 def clean_canvas():
     for i in current_widgets:
@@ -91,6 +143,7 @@ def clean_canvas():
         current_widgets.remove(i)
     canvas.delete('all')
 
-opening_title()
+setting_transition()
+#opening_title()
 
 window.mainloop()
